@@ -122,10 +122,12 @@
         const menuToggle = document.querySelector('.menu-toggle');
         const content = document.getElementById('content');
 
+        // Add click event to toggle the menu visibility
         menuToggle.addEventListener('click', () => {
             menu.classList.toggle('open');
         });
 
+        // Function to dynamically update content
         function showContent(section) {
             let html = '';
             switch (section) {
@@ -155,4 +157,15 @@
                 case 'about':
                     html = `
                         <h1>About Sinner Executor</h1>
-                        <p>Sinner Executor is a tool designed for Roblox enthusiasts to execute scripts
+                        <p>Sinner Executor is a tool designed for Roblox enthusiasts to execute scripts seamlessly. Please ensure you follow the instructions for optimal performance.</p>
+                    `;
+                    break;
+                default:
+                    html = '<h1>Welcome!</h1><p>Use the menu to navigate through the page content.</p>';
+            }
+            content.innerHTML = html;
+            menu.classList.remove('open'); // Close the menu after selection
+        }
+    </script>
+</body>
+</html>
