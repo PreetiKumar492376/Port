@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Page with Side Menu</title>
+    <title>Interactive Page with Side Menu and Eyes</title>
     <style>
         body {
             margin: 0;
@@ -19,10 +19,10 @@
 
         .menu {
             position: fixed;
-            top: 0;
+            top: 60px; /* Moved down to avoid overlapping with toggle button */
             left: 0;
             width: 250px;
-            height: 100%;
+            height: calc(100% - 60px);
             background-color: rgba(0, 0, 0, 0.8);
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
             transform: translateX(-100%);
@@ -60,7 +60,7 @@
         }
 
         .menu-toggle {
-            position: absolute;
+            position: fixed;
             top: 15px;
             left: 15px;
             background: red;
@@ -89,6 +89,37 @@
             line-height: 1.6;
         }
 
+        .eyes-container {
+            position: fixed;
+            bottom: 10%; /* Adjusted position to fit the page */
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 10;
+        }
+
+        .eye {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .pupil {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: black;
+            border-radius: 50%;
+        }
+
         footer {
             margin-top: 50px;
             font-size: 0.9em;
@@ -110,6 +141,15 @@
     <div class="content" id="content">
         <h1>Welcome!</h1>
         <p>Use the menu to navigate through the page content.</p>
+    </div>
+
+    <div class="eyes-container">
+        <div class="eye">
+            <div class="pupil" id="pupil1"></div>
+        </div>
+        <div class="eye">
+            <div class="pupil" id="pupil2"></div>
+        </div>
     </div>
 
     <footer>
@@ -166,6 +206,26 @@
             content.innerHTML = html;
             menu.classList.remove('open'); // Close the menu after selection
         }
+
+        // Eyes that follow the mouse
+        const pupils = document.querySelectorAll('.pupil');
+        document.addEventListener('mousemove', (event) => {
+            const { clientX, clientY } = event;
+            pupils.forEach((pupil) => {
+                const rect = pupil.parentElement.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const deltaX = clientX - centerX;
+                const deltaY = clientY - centerY;
+                const distance = Math.min(15, Math.sqrt(deltaX ** 2 + deltaY ** 2));
+                const angle = Math.atan2(deltaY, deltaX);
+
+                const pupilX = Math.cos(angle) * distance;
+                const pupilY = Math.sin(angle) * distance;
+
+                pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
+            });
+        });
     </script>
 </body>
 </html>
