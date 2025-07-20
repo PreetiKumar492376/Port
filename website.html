@@ -6,12 +6,18 @@
 <title>Interactive Page with Side Menu</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
 <style>
-    html, body {
-        height: 100vh;
+    /* Reset margin/padding and set box-sizing */
+    * {
         margin: 0;
         padding: 0;
+        box-sizing: border-box;
+    }
+
+    html, body {
+        height: 100vh;
+        overflow-y: hidden; /* prevents vertical scrollbar */
         font-family: 'Orbitron', sans-serif;
-        background: #000 url('https://cdn.discordapp.com/attachments/1355379302975144108/1396382223137116271/kn6LVSq.png?ex=687de1c9&is=687c9049&hm=7e5e8c1473f42ce27e602cf520c7fb2f3dcdaf6ab5951540df246cb9c080f981&') center/cover no-repeat;
+        background: #000 url('https://cdn.discordapp.com/attachments/1355379302975144108/1396378149662490664/Vx3G33T.png?ex=687dddfe&is=687c8c7e&hm=ee9ac4aee62c1e71f396882b4b09ab701912e355a6d11f30ea0bea5c55da4d96&') center center / cover no-repeat fixed;
         color: #ddd;
         display: flex;
         justify-content: center;
@@ -27,7 +33,7 @@
         width: 250px;
         height: calc(100% - 60px);
         background-color: rgba(0, 0, 0, 0.85);
-        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        /* Removed box-shadow and border to avoid lines */
         transform: translateX(-100%);
         transition: transform 0.3s ease;
         overflow-y: auto;
