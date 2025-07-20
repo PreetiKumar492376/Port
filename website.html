@@ -115,11 +115,11 @@
         padding-left: 20px;
     }
 
-    footer {
-        margin-top: 50px;
-        font-size: 0.9em;
-        text-align: center;
+    .content footer {
+        margin-top: 40px;
+        font-size: 1em;
         color: #bbb;
+        text-align: center;
     }
 
     .download-link {
@@ -156,12 +156,12 @@
 <main class="content" id="content" role="main">
     <h1 class="content-title">Welcome!</h1>
     <p class="content-text">Use the menu to navigate through the page content.</p>
-</main>
 
-<footer>
-    ☠ UNC METER BELOW ☠
-    <meter value="86" min="0" max="100" low="30" high="70" optimum="80"></meter>
-</footer>
+    <footer>
+        ☠ UNC METER BELOW ☠
+        <meter value="86" min="0" max="100" low="30" high="70" optimum="80"></meter>
+    </footer>
+</main>
 
 <script>
 const menu = document.getElementById('menu');
@@ -180,6 +180,10 @@ function showContent(section) {
             html = `
                 <h1 class="content-title">Welcome!</h1>
                 <p class="content-text">Use the menu to navigate through the page content.</p>
+                <footer>
+                    ☠ UNC METER BELOW ☠
+                    <meter value="86" min="0" max="100" low="30" high="70" optimum="80"></meter>
+                </footer>
             `;
             break;
         case 'download':
@@ -206,7 +210,14 @@ function showContent(section) {
             `;
             break;
         default:
-            html = '<h1 class="content-title">Welcome!</h1><p class="content-text">Use the menu to navigate through the page content.</p>';
+            html = `
+                <h1 class="content-title">Welcome!</h1>
+                <p class="content-text">Use the menu to navigate through the page content.</p>
+                <footer>
+                    ☠ UNC METER BELOW ☠
+                    <meter value="86" min="0" max="100" low="30" high="70" optimum="80"></meter>
+                </footer>
+            `;
     }
     content.innerHTML = html;
     menu.classList.remove('open');
