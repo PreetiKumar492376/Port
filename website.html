@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Interactive Page with Side Menu and Eyes</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 <style>
     html, body {
         margin: 0;
@@ -11,9 +12,9 @@
         height: 100vh;
         width: 100vw;
         overflow-x: hidden;
-        font-family: 'Courier New', Courier, monospace;
-        color: #fff;
-        background: #000 url('https://cdn.discordapp.com/attachments/1355379302975144108/1396375063250473071/kwKlRLg.png?ex=687ddb1e&is=687c899e&hm=71c8edf09e19d77344db2827eb83fd2501d917be3a67b2b64b9c64743de4cfa3&') center/cover no-repeat;
+        font-family: 'Orbitron', sans-serif;
+        color: #ddd;
+        background: #000 url('https://cdn.discordapp.com/attachments/1355379302975144108/1396377454414794819/Ezygk0s.png?ex=687ddd58&is=687c8bd8&hm=7736caf89b2889e78a4efe7a9bb6ee392b0d0549163533f8a3c9ede6b214852b&') center/cover no-repeat;
     }
 
     .menu {
@@ -51,6 +52,8 @@
         text-align: left;
         cursor: pointer;
         border-bottom: 1px solid #444;
+        font-weight: bold;
+        letter-spacing: 0.5px;
     }
 
     .menu-button:hover {
@@ -75,17 +78,36 @@
     .content {
         margin: 20px;
         text-align: center;
+        animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
 
     .content-title {
-        font-size: 2.5em;
+        font-size: 3em;
+        color: #fff;
+        text-shadow: 0 0 10px red, 0 0 20px darkred;
         margin-top: 20px;
-        text-shadow: 2px 2px 5px red;
     }
 
     .content-text {
         font-size: 1.2em;
-        line-height: 1.6;
+        line-height: 1.8;
+        letter-spacing: 0.5px;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .content-text ul {
+        list-style: square;
+        text-align: left;
+        max-width: 600px;
+        margin: 0 auto;
+        padding-left: 20px;
     }
 
     .eyes-container {
@@ -132,11 +154,14 @@
         color: #fff;
         text-decoration: none;
         border-radius: 5px;
+        box-shadow: 0 0 10px red;
+        transition: all 0.2s ease;
     }
 
     .download-link:hover {
         background: #fff;
         color: #000;
+        transform: scale(1.05);
     }
 </style>
 </head>
