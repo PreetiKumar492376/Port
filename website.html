@@ -17,7 +17,7 @@
         height: 100vh;
         overflow-y: hidden; /* prevents vertical scrollbar */
         font-family: 'Orbitron', sans-serif;
-        background: #000 url('https://cdn.discordapp.com/attachments/1355379302975144108/1396382223137116271/kn6LVSq.png?ex=687de1c9&is=687c9049&hm=7e5e8c1473f42ce27e602cf520c7fb2f3dcdaf6ab5951540df246cb9c080f981&') center center / cover no-repeat fixed;
+        background: #000 url('https://cdn.discordapp.com/attachments/1355379302975144108/1396378149662490664/Vx3G33T.png?ex=687dddfe&is=687c8c7e&hm=ee9ac4aee62c1e71f396882b4b09ab701912e355a6d11f30ea0bea5c55da4d96&') center center / cover no-repeat fixed;
         color: #ddd;
         display: flex;
         justify-content: center;
@@ -88,6 +88,16 @@
         max-width: 90vw;
         width: 600px;
         animation: fadeIn 0.5s ease;
+
+        /* Gray blurred box styles */
+        background: rgba(128, 128, 128, 0.25); /* semi-transparent gray */
+        border-radius: 15px;
+        padding: 30px 40px;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 0 30px rgba(128, 128, 128, 0.3);
+        color: #ddd;
+        text-align: center;
     }
 
     @keyframes fadeIn {
@@ -158,13 +168,13 @@
 </nav>
 
 <main class="content" id="content" role="main">
-    <h1 class="content-title">Welcome!</h1>
-    <p class="content-text">Use the menu to navigate through the page content.</p>
+  <h1 class="content-title">Welcome!</h1>
+  <p class="content-text">Use the menu to navigate through the page content.</p>
 
-    <footer>
-        ☠ UNC METER BELOW ☠
-        <meter value="86" min="0" max="100" low="30" high="70" optimum="80"></meter>
-    </footer>
+  <footer>
+    ☠ UNC METER BELOW ☠
+    <meter value="86" min="0" max="100" low="30" high="70" optimum="80"></meter>
+  </footer>
 </main>
 
 <script>
