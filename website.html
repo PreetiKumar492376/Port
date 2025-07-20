@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Interactive Page with Side Menu and Eyes</title>
+<title>Interactive Page with Side Menu</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
 <style>
     html, body {
@@ -76,9 +76,14 @@
     }
 
     .content {
-        margin: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
         text-align: center;
         animation: fadeIn 0.5s ease;
+        max-width: 90vw;
+        width: 600px;
     }
 
     @keyframes fadeIn {
@@ -108,35 +113,6 @@
         max-width: 600px;
         margin: 0 auto;
         padding-left: 20px;
-    }
-
-    .eyes-container {
-        position: fixed;
-        bottom: 10%;
-        left: 50%;
-        transform: translateX(-50%);
-        display: flex;
-        gap: 20px;
-        z-index: 10;
-    }
-
-    .eye {
-        width: 80px;
-        height: 80px;
-        background: #fff;
-        border-radius: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-    }
-
-    .pupil {
-        width: 30px;
-        height: 30px;
-        background: #000;
-        border-radius: 50%;
-        transition: transform 0.05s ease-out;
     }
 
     footer {
@@ -181,15 +157,6 @@
     <h1 class="content-title">Welcome!</h1>
     <p class="content-text">Use the menu to navigate through the page content.</p>
 </main>
-
-<div class="eyes-container">
-    <div class="eye">
-        <div class="pupil" id="pupil1"></div>
-    </div>
-    <div class="eye">
-        <div class="pupil" id="pupil2"></div>
-    </div>
-</div>
 
 <footer>
     ☠ UNC METER BELOW ☠
@@ -245,23 +212,6 @@ function showContent(section) {
     menu.classList.remove('open');
     menu.setAttribute('aria-hidden', 'true');
 }
-
-// Eyes follow cursor
-const pupils = document.querySelectorAll('.pupil');
-document.addEventListener('mousemove', ({ clientX, clientY }) => {
-    pupils.forEach(pupil => {
-        const rect = pupil.parentElement.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const dx = clientX - centerX;
-        const dy = clientY - centerY;
-        const angle = Math.atan2(dy, dx);
-        const distance = Math.min(15, Math.hypot(dx, dy));
-        const x = Math.cos(angle) * distance;
-        const y = Math.sin(angle) * distance;
-        pupil.style.transform = `translate(${x}px, ${y}px)`;
-    });
-});
 </script>
 </body>
 </html>
