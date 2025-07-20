@@ -8,215 +8,235 @@
     html, body {
         margin: 0;
         padding: 0;
-        min-height: 100vh;
-        width: 100%;
+        height: 100vh;
+        width: 100vw;
+        overflow-x: hidden;
         font-family: 'Courier New', Courier, monospace;
-        color: #ffffff;
-        background-color: #000000;
-        background-image: url('https://cdn.discordapp.com/attachments/1355379302975144108/1396375063250473071/kwKlRLg.png?ex=687ddb1e&is=687c899e&hm=71c8edf09e19d77344db2827eb83fd2501d917be3a67b2b64b9c64743de4cfa3&');
-        background-size: cover; /* This scales the image to fill screen */
-        background-position: center;
-        background-repeat: no-repeat;
+        color: #fff;
+        background: #000 url('https://cdn.discordapp.com/attachments/1355379302975144108/1396375063250473071/kwKlRLg.png?ex=687ddb1e&is=687c899e&hm=71c8edf09e19d77344db2827eb83fd2501d917be3a67b2b64b9c64743de4cfa3&') center/cover no-repeat;
     }
 
+    .menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        width: 250px;
+        height: calc(100% - 60px);
+        background-color: rgba(0, 0, 0, 0.85);
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        z-index: 1000;
+    }
 
-        .menu.open {
-            transform: translateX(0);
-        }
+    .menu.open {
+        transform: translateX(0);
+    }
 
-        .menu-title {
-            color: red;
-            text-align: center;
-            margin: 10px 0;
-            text-shadow: 2px 2px 5px red;
-        }
+    .menu-title {
+        color: red;
+        text-align: center;
+        margin: 10px 0;
+        text-shadow: 2px 2px 5px red;
+    }
 
-        .menu-button {
-            width: 100%;
-            padding: 15px;
-            background: none;
-            border: none;
-            color: #ffffff;
-            font-size: 18px;
-            text-align: left;
-            cursor: pointer;
-            border-bottom: 1px solid #444;
-        }
+    .menu-button {
+        width: 100%;
+        padding: 15px;
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 18px;
+        text-align: left;
+        cursor: pointer;
+        border-bottom: 1px solid #444;
+    }
 
-        .menu-button:hover {
-            background-color: red;
-            color: black;
-        }
+    .menu-button:hover {
+        background-color: red;
+        color: black;
+    }
 
-        .menu-toggle {
-            position: fixed;
-            top: 15px;
-            left: 15px;
-            background: red;
-            border: none;
-            color: #ffffff;
-            padding: 10px 15px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 16px;
-            z-index: 1100;
-        }
+    .menu-toggle {
+        position: fixed;
+        top: 15px;
+        left: 15px;
+        background: red;
+        border: none;
+        color: #fff;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        font-size: 16px;
+        z-index: 1100;
+    }
 
-        .content {
-            margin: 20px;
-            text-align: center;
-        }
+    .content {
+        margin: 20px;
+        text-align: center;
+    }
 
-        .content-title {
-            font-size: 3em;
-            margin-top: 20px;
-            text-shadow: 2px 2px 5px red;
-        }
+    .content-title {
+        font-size: 2.5em;
+        margin-top: 20px;
+        text-shadow: 2px 2px 5px red;
+    }
 
-        .content-text {
-            font-size: 1.2em;
-            line-height: 1.6;
-        }
+    .content-text {
+        font-size: 1.2em;
+        line-height: 1.6;
+    }
 
-        .eyes-container {
-            position: fixed;
-            bottom: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            z-index: 10;
-        }
+    .eyes-container {
+        position: fixed;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 20px;
+        z-index: 10;
+    }
 
-        .eye {
-            position: relative;
-            width: 80px;
-            height: 80px;
-            background-color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        }
+    .eye {
+        width: 80px;
+        height: 80px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+    }
 
-        .pupil {
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background-color: black;
-            border-radius: 50%;
-        }
+    .pupil {
+        width: 30px;
+        height: 30px;
+        background: #000;
+        border-radius: 50%;
+        transition: transform 0.05s ease-out;
+    }
 
-        footer {
-            margin-top: 50px;
-            font-size: 0.9em;
-            text-align: center;
-            color: #bbbbbb;
-        }
-    </style>
+    footer {
+        margin-top: 50px;
+        font-size: 0.9em;
+        text-align: center;
+        color: #bbb;
+    }
+
+    .download-link {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 20px;
+        background: red;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .download-link:hover {
+        background: #fff;
+        color: #000;
+    }
+</style>
 </head>
+
 <body>
-    <button class="menu-toggle" aria-label="Toggle Menu">☰ Menu</button>
-    <nav class="menu" id="menu" aria-hidden="true">
-        <h2 class="menu-title">Menu</h2>
-        <button class="menu-button" onclick="showContent('home')">Home</button>
-        <button class="menu-button" onclick="showContent('download')">Download</button>
-        <button class="menu-button" onclick="showContent('tips')">Tips</button>
-        <button class="menu-button" onclick="showContent('about')">About</button>
-    </nav>
+<button class="menu-toggle" aria-label="Toggle Menu">☰ Menu</button>
 
-    <main class="content" id="content" role="main">
-        <h1 class="content-title">Welcome!</h1>
-        <p class="content-text">Use the menu to navigate through the page content.</p>
-    </main>
+<nav class="menu" id="menu" aria-hidden="true">
+    <h2 class="menu-title">Menu</h2>
+    <button class="menu-button" onclick="showContent('home')">Home</button>
+    <button class="menu-button" onclick="showContent('download')">Download</button>
+    <button class="menu-button" onclick="showContent('tips')">Tips</button>
+    <button class="menu-button" onclick="showContent('about')">About</button>
+</nav>
 
-    <div class="eyes-container">
-        <div class="eye">
-            <div class="pupil" id="pupil1"></div>
-        </div>
-        <div class="eye">
-            <div class="pupil" id="pupil2"></div>
-        </div>
+<main class="content" id="content" role="main">
+    <h1 class="content-title">Welcome!</h1>
+    <p class="content-text">Use the menu to navigate through the page content.</p>
+</main>
+
+<div class="eyes-container">
+    <div class="eye">
+        <div class="pupil" id="pupil1"></div>
     </div>
+    <div class="eye">
+        <div class="pupil" id="pupil2"></div>
+    </div>
+</div>
 
-    <footer>
-        ☠ UNC METER BELOW ☠
-        <meter value="86" min="0" max="100" low="30" high="70" optimum="80"></meter>
-    </footer>
+<footer>
+    ☠ UNC METER BELOW ☠
+    <meter value="86" min="0" max="100" low="30" high="70" optimum="80"></meter>
+</footer>
 
-    <script>
-        const menu = document.getElementById('menu');
-        const menuToggle = document.querySelector('.menu-toggle');
-        const content = document.getElementById('content');
+<script>
+const menu = document.getElementById('menu');
+const menuToggle = document.querySelector('.menu-toggle');
+const content = document.getElementById('content');
 
-        // Add click event to toggle the menu visibility
-        menuToggle.addEventListener('click', () => {
-            const isOpen = menu.classList.toggle('open');
-            menu.setAttribute('aria-hidden', !isOpen);
-        });
+menuToggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    menu.setAttribute('aria-hidden', String(!isOpen));
+});
 
-        // Function to dynamically update content
-        function showContent(section) {
-            let html = '';
-            switch (section) {
-                case 'home':
-                    html = `
-                        <h1 class="content-title">Welcome!</h1>
-                        <p class="content-text">Use the menu to navigate through the page content.</p>
-                    `;
-                    break;
-                case 'download':
-                    html = `
-                        <h1 class="content-title">Download Page</h1>
-                        <p class="content-text">Click below to download the Port Executor:</p>
-                        <a class="download-link" href="https://github.com/PreetiKumar492376/website/raw/refs/heads/main/Port.zip" download>Download Port Executor</a>
-                    `;
-                    break;
-                case 'tips':
-                    html = `
-                        <h1 class="content-title">Tips</h1>
-                        <ul class="content-text">
-                            <li>Ensure your antivirus is turned off before downloading.</li>
-                            <li>Run the file as an administrator for optimal performance.</li>
-                            <li>Double-check that you are attaching the tool to Roblox correctly.</li>
-                        </ul>
-                    `;
-                    break;
-                case 'about':
-                    html = `
-                        <h1 class="content-title">About Port Executor</h1>
-                        <p class="content-text">Port Executor is a tool designed for Roblox enthusiasts to execute scripts seamlessly. Please ensure you follow the instructions for optimal performance.</p>
-                    `;
-                    break;
-                default:
-                    html = '<h1 class="content-title">Welcome!</h1><p class="content-text">Use the menu to navigate through the page content.</p>';
-            }
-            content.innerHTML = html;
-            menu.classList.remove('open'); // Close the menu after selection
-            menu.setAttribute('aria-hidden', 'true');
-        }
+function showContent(section) {
+    let html = '';
+    switch (section) {
+        case 'home':
+            html = `
+                <h1 class="content-title">Welcome!</h1>
+                <p class="content-text">Use the menu to navigate through the page content.</p>
+            `;
+            break;
+        case 'download':
+            html = `
+                <h1 class="content-title">Download Page</h1>
+                <p class="content-text">Click below to download the Port Executor:</p>
+                <a class="download-link" href="https://github.com/PreetiKumar492376/website/raw/refs/heads/main/Port.zip" download>Download Port Executor</a>
+            `;
+            break;
+        case 'tips':
+            html = `
+                <h1 class="content-title">Tips</h1>
+                <ul class="content-text">
+                    <li>Ensure your antivirus is turned off before downloading.</li>
+                    <li>Run the file as an administrator for optimal performance.</li>
+                    <li>Double-check that you are attaching the tool to Roblox correctly.</li>
+                </ul>
+            `;
+            break;
+        case 'about':
+            html = `
+                <h1 class="content-title">About Port Executor</h1>
+                <p class="content-text">Port Executor is a tool designed for Roblox enthusiasts to execute scripts seamlessly. Please ensure you follow the instructions for optimal performance.</p>
+            `;
+            break;
+        default:
+            html = '<h1 class="content-title">Welcome!</h1><p class="content-text">Use the menu to navigate through the page content.</p>';
+    }
+    content.innerHTML = html;
+    menu.classList.remove('open');
+    menu.setAttribute('aria-hidden', 'true');
+}
 
-        // Eyes that follow the mouse
-        const pupils = document.querySelectorAll('.pupil');
-        document.addEventListener('mousemove', (event) => {
-            const { clientX, clientY } = event;
-            pupils.forEach((pupil) => {
-                const rect = pupil.parentElement.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                const deltaX = clientX - centerX;
-                const deltaY = clientY - centerY;
-                const distance = Math.min(15, Math.sqrt(deltaX ** 2 + deltaY ** 2));
-                const angle = Math.atan2(deltaY, deltaX);
-
-                const pupilX = Math.cos(angle) * distance;
-                const pupilY = Math.sin(angle) * distance;
-
-                pupil.style.transform = `translate(${pupilX}px, ${pupilY}px)`;
-            });
-        });
-    </script>
+// Eyes follow cursor
+const pupils = document.querySelectorAll('.pupil');
+document.addEventListener('mousemove', ({ clientX, clientY }) => {
+    pupils.forEach(pupil => {
+        const rect = pupil.parentElement.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const dx = clientX - centerX;
+        const dy = clientY - centerY;
+        const angle = Math.atan2(dy, dx);
+        const distance = Math.min(15, Math.hypot(dx, dy));
+        const x = Math.cos(angle) * distance;
+        const y = Math.sin(angle) * distance;
+        pupil.style.transform = `translate(${x}px, ${y}px)`;
+    });
+});
+</script>
 </body>
 </html>
